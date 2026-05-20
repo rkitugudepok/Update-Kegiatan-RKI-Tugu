@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PJ RKI Tugu | Form Pelaporan Kegiatan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen py-10 px-4">
+
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm overflow-hidden p-6 md:p-8 border border-gray-100">
+        
+        <div class="border-4 border-[#F65314] rounded-xl p-6 bg-[#FFF8F5] text-center mb-8 relative">
+            <div class="flex justify-center items-center gap-6 mb-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Logo_PKS.svg/1200px-Logo_PKS.svg.png" alt="Logo PKS" class="h-16 w-auto object-contain">
+                <div class="h-12 w-[2px] bg-gray-300"></div>
+                <div class="text-left font-bold text-gray-800 leading-tight">
+                    <span class="text-[#F65314] block text-lg">Rumah Keluarga</span>
+                    <span class="text-gray-700 block text-sm">Indonesia</span>
+                </div>
+            </div>
+            
+            <h2 class="text-base font-bold text-gray-800 leading-relaxed">
+                Assalamu'alaikum Warohmatullah para PJ RKI Kelurahan Tugu.
+            </h2>
+            <p class="text-gray-700 text-sm mt-2 font-medium">
+                Silakan update setiap ada kegiatan baru yang dilakukan oleh PJ RKI, baik titik lama ataupun baru.
+            </p>
+        </div>
+
+        <form id="kegiatanForm" class="space-y-5 text-gray-700">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Tanggal Kegiatan *</label>
+                    <input type="date" id="tanggalKegiatan" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Status Titik Kegiatan *</label>
+                    <select id="statusTitik" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                        <option value="">-- Pilih Status Titik --</option>
+                        <option value="Titik Lama">Titik Lama</option>
+                        <option value="Titik Baru">Titik Baru</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-1">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Kode Titik *</label>
+                    <div class="flex rounded-lg shadow-sm">
+                        <span class="inline-flex items-center px-3 bg-gray-100 border border-r-0 border-gray-300 rounded-l-lg text-gray-500 text-xs font-semibold select-none">
+                            TUGU-RKI-
+                        </span>
+                        <input type="text" id="kodeTitikAngka" placeholder="1" required class="w-full px-3 py-2 border border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">RT *</label>
+                    <input type="number" id="rt" placeholder="001" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">RW *</label>
+                    <input type="number" id="rw" placeholder="002" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Bentuk Kegiatan *</label>
+                    <select id="bentukKegiatanSelect" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                        <option value="">-- Pilih Jenis Kegiatan --</option>
+                        <option value="Penyuluhan">Penyuluhan</option>
+                        <option value="Bakti Sosial">Bakti Sosial</option>
+                        <option value="Pengajian Rutin">Pengajian Rutin</option>
+                        <option value="LAINNYA">Lainnya... (isi sendiri)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Total Peserta *</label>
+                    <input type="number" id="totalPeserta" min="1" placeholder="0" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                </div>
+            </div>
+
+            <div id="kolomKegiatanLainnya" class="hidden">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Tuliskan Bentuk Kegiatan Lainnya *</label>
+                <input type="text" id="bentukKegiatanKustom" placeholder="Masukkan nama kegiatan baru di sini" class="w-full px-3 py-2 border border-orange-300 bg-orange-50/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Nama PJ RKI *</label>
+                    <input type="text" id="namaPj" placeholder="Nama Lengkap PJ" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">No HP PJ RKI *</label>
+                    <input type="tel" id="noHpPj" placeholder="Contoh: 08123456789" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314]">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Dokumentasi *</label>
+                <div class="space-y-2">
+                    <label for="fotoFile" class="w-full flex items-center justify-center bg-[#F65314] hover:bg-[#d4430e] text-white font-semibold py-2.5 px-4 rounded-lg cursor-pointer transition duration-150 shadow-sm text-center">
+                        Upload Foto Kegiatan (.jpg / .png)
+                    </label>
+                    <input type="file" id="fotoFile" accept="image/jpeg, image/png" class="hidden">
+                    
+                    <div id="namaFileTerpilih" class="text-xs text-gray-500 text-center italic hidden"></div>
+
+                    <p class="text-xs text-gray-400 text-center">Capture/upload file .jpg/png langsung dari galeri atau device Anda.</p>
+                    
+                    <input type="url" id="linkFoto" placeholder="Atau paste link folder Google Drive di sini jika file sangat banyak..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 text-sm">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Tokoh Terlibat</label>
+                <textarea id="tokohTerlibat" rows="2" placeholder="(Contoh: Bpk. Ahmad - RW 02, Ibu Susi - Tokoh Agama)" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314] text-sm"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Kritik & Saran</label>
+                <textarea id="kritikSaran" rows="2" placeholder="Masukkan masukan, kritik, atau kendala lapangan jika ada..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F65314]/50 focus:border-[#F65314] text-sm"></textarea>
+            </div>
+
+            <div class="pt-2">
+                <button type="submit" id="btnSubmit" class="w-full bg-[#F65314] hover:bg-[#d4430e] text-white font-bold py-3 px-4 rounded-lg transition duration-150 shadow-md">
+                    Kirim Laporan
+                </button>
+            </div>
+        </form>
+
+        <div id="notifikasi" class="hidden mt-4 p-5 rounded-xl text-center border"></div>
+    </div>
+
+    <script>
+        // PENTING: Ganti dengan URL Aplikasi Web hasil deploy Google Apps Script kamu
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFPtE8_GDOMxiDDkuHhBMN_tknxxyRak8eoRctNhwgStfNZt1pQF7otCusUfljOkUj/exec";
+
+        const bentukKegiatanSelect = document.getElementById('bentukKegiatanSelect');
+        const kolomKegiatanLainnya = document.getElementById('kolomKegiatanLainnya');
+        const bentukKegiatanKustom = document.getElementById('bentukKegiatanKustom');
+        const fotoFileInput = document.getElementById('fotoFile');
+        const namaFileTerpilih = document.getElementById('namaFileTerpilih');
+
+        // Memunculkan nama file ketika PJ memilih foto galeri
+        fotoFileInput.addEventListener('change', function() {
+            if (this.files[0]) {
+                namaFileTerpilih.innerText = "File terpilih: " + this.files[0].name;
+                namaFileTerpilih.classList.remove('hidden');
+            }
+        });
+
+        // Toggle isian bebas bentuk kegiatan
+        bentukKegiatanSelect.addEventListener('change', function() {
+            if (this.value === 'LAINNYA') {
+                kolomKegiatanLainnya.classList.remove('hidden');
+                bentukKegiatanKustom.required = true;
+            } else {
+                kolomKegiatanLainnya.classList.add('hidden');
+                bentukKegiatanKustom.required = false;
+                bentukKegiatanKustom.value = '';
+            }
+        });
+
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Trigger kirim data form
+        document.getElementById('kegiatanForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btnSubmit = document.getElementById('btnSubmit');
+            const notifikasi = document.getElementById('notifikasi');
+            const linkFotoInput = document.getElementById('linkFoto');
+
+            if (!fotoFileInput.files[0] && !linkFotoInput.value.trim()) {
+                alert("Mohon sertakan bukti dokumentasi berupa file foto langsung atau lampiran tautan Drive.");
+                return;
+            }
+
+            // Ubah tombol ke mode loading
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "Memproses & mengirim data ke server...";
+            btnSubmit.className = "w-full bg-gray-400 text-white font-bold py-3 px-4 rounded-lg cursor-not-allowed shadow-none";
+
+            try {
+                let fileFotoTerproses = linkFotoInput.value.trim();
+
+                if (fotoFileInput.files[0]) {
+                    fileFotoTerproses = await readFileAsBase64(fotoFileInput.files[0]);
+                }
+
+                const kodeLengkap = "TUGU-RKI-" + document.getElementById('kodeTitikAngka').value.trim();
+
+                let kegiatanAkhir = bentukKegiatanSelect.value;
+                if (kegiatanAkhir === 'LAINNYA') {
+                    kegiatanAkhir = bentukKegiatanKustom.value.trim();
+                }
+
+                // Pengelompokan paket data untuk dikirim ke Google Sheets
+                const payload = {
+                    tanggalKegiatan: document.getElementById('tanggalKegiatan').value,
+                    statusTitik: document.getElementById('statusTitik').value,
+                    kodeTitik: kodeLengkap,
+                    rt: document.getElementById('rt').value,
+                    rw: document.getElementById('rw').value,
+                    bentukKegiatan: kegiatanAkhir,
+                    totalPeserta: document.getElementById('totalPeserta').value,
+                    namaPj: document.getElementById('namaPj').value,
+                    noHpPj: document.getElementById('noHpPj').value,
+                    linkFoto: fileFotoTerproses,
+                    tokohTerlibat: document.getElementById('tokohTerlibat').value,
+                    kritikSaran: document.getElementById('kritikSaran').value
+                };
+
+                // Request POST menuju Google Sheets Apps Script
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Tampilan Respon Sukses (Sesuai Pesan Jazakillah Khoiron)
+                notifikasi.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border-red-200');
+                notifikasi.classList.add('bg-orange-50', 'text-[#F65314]', 'border-orange-200');
+                notifikasi.innerHTML = `
+                    <div class="text-xl font-bold mb-1">✓ Laporan Berhasil Terkirim</div>
+                    <div class="text-gray-700 font-medium text-sm">Jazakillah Khoiron atas updatenya. Data Anda telah aman tersimpan di pusat data RKI Kelurahan Tugu.</div>
+                `;
+
+                // Bersihkan form agar siap diisi kembali
+                document.getElementById('kegiatanForm').reset();
+                kolomKegiatanLainnya.classList.add('hidden');
+                bentukKegiatanKustom.required = false;
+                namaFileTerpilih.classList.add('hidden');
+
+            } catch (error) {
+                console.error(error);
+                notifikasi.classList.remove('hidden', 'bg-orange-50', 'text-[#F65314]', 'border-orange-200');
+                notifikasi.classList.add('bg-red-50', 'text-red-700', 'border-red-200');
+                notifikasi.innerText = "❌ Terjadi masalah pengiriman data. Periksa koneksi internet atau hubungi Admin.";
+            } finally {
+                // Kembalikan tombol kirim seperti sedia kala
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = "Kirim Laporan";
+                btnSubmit.className = "w-full bg-[#F65314] hover:bg-[#d4430e] text-white font-bold py-3 px-4 rounded-lg transition duration-150 shadow-md";
+            }
+        });
+    </script>
+</body>
+</html>
